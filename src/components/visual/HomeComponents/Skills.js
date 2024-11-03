@@ -1,16 +1,10 @@
 import { motion } from "framer-motion";
 import React from "react";
 import {
-  SiTypescript,
   SiJavascript,
-  SiExpress,
-  SiNestjs,
   SiReact,
   SiPython,
-  SiNodedotjs,
-  SiMongodb,
   SiMysql,
-  SiSwagger,
   SiPostgresql,
   SiLivewire,
   SiLaravel,
