@@ -51,7 +51,7 @@ function Hero() {
           </div>
           <div className="flex justify-center space-x-6">
             <a
-              href="https://drive.google.com/drive/folders/1ds1K2zPTSCE2Uc38B_b3pEWymaZyxLRG?usp=share_link"
+              href="assets/ardhendu.pdf"
               target="_blank"
               rel="noreferrer">
               <button
