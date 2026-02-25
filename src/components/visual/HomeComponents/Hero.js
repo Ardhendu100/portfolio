@@ -6,10 +6,9 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const roles = [
-  "AI / GenAI Engineer",
   "Full Stack Developer",
-  "Software Engineer",
-  "LLM Applications Builder",
+  "AI / GenAI Engineer",
+  "LLM Applications Developer",
 ];
 
 function TypingText() {
