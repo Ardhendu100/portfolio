@@ -1,68 +1,90 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
+import { BsArrowRight } from "react-icons/bs";
+import { HiCheckCircle } from "react-icons/hi";
 
 function ContactForm() {
   const form = useRef();
-  const [success, setsuccess] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [sending, setSending] = useState(false);
+
   const sendEmail = (e) => {
     e.preventDefault();
-    setsuccess(true);
+    setSending(true);
     emailjs
       .sendForm(
-        "template_8vdhcao", // service Id
-        "template_5gagyis", // Tempalte ID
-        form.current, // data
-        "HX0lU-VEMegPgZ7LT" // Public API Key
+        "template_8vdhcao",
+        "template_5gagyis",
+        form.current,
+        "HX0lU-VEMegPgZ7LT"
       )
-      .then(
-        (result) => {
-          form.current.reset();
-          setsuccess(true);
-        },
-        (error) => {
-          form.current.reset();
-        }
-      );
+      .then(() => {
+        form.current.reset();
+        setSuccess(true);
+        setSending(false);
+      })
+      .catch(() => {
+        form.current.reset();
+        setSending(false);
+      });
   };
+
+  const inputClass =
+    "w-full bg-surface border border-border rounded-lg px-4 py-3 text-white placeholder-muted text-sm outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 transition-all duration-200";
+
   return (
-    <div className="mt-14">
-      {success && <div className="mb-2">Successfully Send !! 😊</div>}
-      <form ref={form} onSubmit={sendEmail} className="space-y-5">
-        <div>
-          <input
-            type="text"
-            name="from_name"
-            placeholder="Name"
-            required
-            className="w-80 md:w-[500px] h-12 bg-[#bbbbbb] outline-none p-2 pl-3 text-lg md:text-2xl placeholder-black"
-          />
-        </div>
-        <div>
-          <input
-            type="email"
-            name="from_email"
-            placeholder="Email"
-            required
-            className="w-80 md:w-[500px] h-12 bg-[#bbbbbb] outline-none p-2  pl-3 text-lg md:text-2xl placeholder-black"
-          />
-        </div>
-        <div>
-          <textarea
-            name="message"
-            placeholder="Message"
-            required
-            className="w-80 md:w-[500px] h-52 bg-[#bbbbbb] outline-none resize-none p-2 pl-3 text-lg md:text-xl placeholder-black"
-          />
-        </div>
-        <div className="flex justify-center lg:justify-end">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="w-full max-w-lg">
+      {success ? (
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          className="flex flex-col items-center justify-center py-16 text-center">
+          <HiCheckCircle size={56} className="text-accent mb-4" />
+          <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
+          <p className="text-subtle text-sm">I'll get back to you shortly. 🚀</p>
           <button
-            type="submit"
-            className="w-80 md:w-[500px] px-10 py-1 text-xl text-white bg-black hover:bg-white hover:text-black border-2 border-black">
-            Send
+            onClick={() => setSuccess(false)}
+            className="mt-6 text-accent text-sm underline underline-offset-4 hover:text-white transition-colors">
+            Send another message
           </button>
-        </div>
-      </form>
-    </div>
+        </motion.div>
+      ) : (
+        <form ref={form} onSubmit={sendEmail} className="space-y-4">
+          <div>
+            <label className="block text-xs text-muted font-medium mb-1.5 tracking-wider uppercase">Name</label>
+            <input type="text" name="from_name" placeholder="Your name" required className={inputClass} />
+          </div>
+          <div>
+            <label className="block text-xs text-muted font-medium mb-1.5 tracking-wider uppercase">Email</label>
+            <input type="email" name="from_email" placeholder="your@email.com" required className={inputClass} />
+          </div>
+          <div>
+            <label className="block text-xs text-muted font-medium mb-1.5 tracking-wider uppercase">Message</label>
+            <textarea
+              name="message"
+              placeholder="Tell me about your project or opportunity..."
+              required
+              rows={6}
+              className={`${inputClass} resize-none`}
+            />
+          </div>
+          <motion.button
+            type="submit"
+            disabled={sending}
+            whileHover={{ scale: 1.02, boxShadow: "0 0 20px #00d4ff33" }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full flex items-center justify-center gap-2 py-3 bg-accent text-bg font-bold text-sm rounded-lg disabled:opacity-50 transition-all">
+            {sending ? "Sending..." : "Send Message"}
+            {!sending && <BsArrowRight size={15} />}
+          </motion.button>
+        </form>
+      )}
+    </motion.div>
   );
 }
 

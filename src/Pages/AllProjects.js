@@ -5,10 +5,12 @@ import AllProjectCards from "../components/visual/ProjectComponents/AllProjectCa
 
 function AllProjects() {
   return (
-    <div>
-      <Navbar></Navbar>
-      <AllProjectCards></AllProjectCards>
-      <Footer></Footer>
+    <div className="bg-bg min-h-screen">
+      <Navbar />
+      <div className="pt-16">
+        <AllProjectCards />
+      </div>
+      <Footer />
     </div>
   );
 }
