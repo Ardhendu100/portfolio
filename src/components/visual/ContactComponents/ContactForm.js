@@ -14,18 +14,19 @@ function ContactForm() {
     setSending(true);
     emailjs
       .sendForm(
-        "template_8vdhcao",
-        "template_5gagyis",
-        form.current,
-        "HX0lU-VEMegPgZ7LT"
+        "service_o10z3q2",  // Replace with your actual Service ID from EmailJS dashboard
+        "template_8vdhcao",           // Your Template ID
+        form.current,                  // Form reference
+        "HX0lU-VEMegPgZ7LT"           // Your Public Key
       )
       .then(() => {
         form.current.reset();
         setSuccess(true);
         setSending(false);
       })
-      .catch(() => {
-        form.current.reset();
+      .catch((error) => {
+        console.error("EmailJS error:", error);
+        alert("Failed to send message. Please try again.");
         setSending(false);
       });
   };
