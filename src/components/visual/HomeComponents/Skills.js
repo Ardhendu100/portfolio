@@ -7,7 +7,6 @@ import {
   SiNodedotjs,
   SiBootstrap,
   SiVuedotjs,
-  SiHuggingface,
   SiLangchain,
   SiOperagx,
 } from "react-icons/si";

@@ -1,4 +1,3 @@
-import { DiMysql } from "react-icons/di";
 
 export const AllProjectsData = [
   {
