@@ -5,44 +5,35 @@ import { HiOutlineBriefcase } from "react-icons/hi";
 function Experience() {
   const experience = [
     {
+      company: "Auroinfo Private Limited",
+      role: "Full Stack Developer",
+      duration: "Dec 2024 – present",
+      type: "Full-time",
+    },
+    {
       company: "AlumNetworks Private Limited",
       role: "Full Stack Developer",
-      duration: "Jun 2023 – Present",
+      duration: "Jun 2023 – Nov 2024",
       type: "Full-time",
-      highlights: [
-        "Built a Ticketing system for a chatbot handling out-of-office hours — 34% more customer engagement.",
-        "Integrated third-party systems: CRM, RPA bots, SendGrid, Google Cloud Functions & Storage.",
-        "Contributed to Anomaly Detection, custom widgets, webform, and logging features.",
-        "Developed custom widgets for support agents.",
-      ],
     },
     {
       company: "Hyscaler",
       role: "Jr. Software Developer",
       duration: "Feb 2023 – May 2023",
       type: "Full-time",
-      highlights: [
-        "Worked on a Hospital Management ERP system using Odoo.",
-        "Gained deep understanding of ERP architecture and workflows.",
-      ],
     },
     {
       company: "Hyscaler",
       role: "Jr. Technical Programmer",
       duration: "Jul 2022 – Jan 2023",
       type: "Full-time",
-      highlights: [
-        "Developed modules for Hospital Management ERP using Odoo.",
-      ],
     },
     {
       company: "Hyscaler",
       role: "Software Developer Trainee",
       duration: "Apr 2022 – Jun 2022",
       type: "Internship",
-      highlights: [
-        "Onboarded to ERP systems and contributed to initial development tasks.",
-      ],
+      
     },
   ];
 
@@ -93,14 +84,14 @@ function Experience() {
                     </span>
                   </div>
                 </div>
-                <ul className="space-y-1.5">
+                {/* <ul className="space-y-1.5">
                   {exp.highlights.map((h, j) => (
                     <li key={j} className="flex items-start gap-2 text-subtle text-sm leading-relaxed">
                       <span className="text-accent mt-1.5 flex-shrink-0 text-xs">▹</span>
                       {h}
                     </li>
                   ))}
-                </ul>
+                </ul> */}
               </div>
             </motion.div>
           ))}

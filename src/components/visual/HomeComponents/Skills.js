@@ -2,8 +2,14 @@ import { motion } from "framer-motion";
 import React from "react";
 import {
   SiJavascript, SiReact, SiPython, SiMysql, SiPostgresql,
-  SiDjango, SiPhp, SiLaravel, SiTailwindcss, SiGit,
+  SiDjango, SiLaravel, SiTailwindcss, SiGit,
   SiDocker, SiOpenai, SiFastapi, SiRedis, SiTypescript,
+  SiNodedotjs,
+  SiBootstrap,
+  SiVuedotjs,
+  SiHuggingface,
+  SiLangchain,
+  SiOperagx,
 } from "react-icons/si";
 import { FaBrain } from "react-icons/fa";
 
@@ -14,28 +20,8 @@ const skillGroups = [
     skills: [
       { name: "OpenAI / GPT", icon: <SiOpenai /> },
       { name: "LLM Integration", icon: <FaBrain /> },
-      { name: "FastAPI", icon: <SiFastapi /> },
-      { name: "Python", icon: <SiPython /> },
-    ],
-  },
-  {
-    label: "Frontend",
-    color: "#a78bfa",
-    skills: [
-      { name: "React JS", icon: <SiReact /> },
-      { name: "JavaScript", icon: <SiJavascript /> },
-      { name: "TypeScript", icon: <SiTypescript /> },
-      { name: "Tailwind CSS", icon: <SiTailwindcss /> },
-    ],
-  },
-  {
-    label: "Backend",
-    color: "#34d399",
-    skills: [
-      { name: "Django", icon: <SiDjango /> },
-      { name: "Laravel", icon: <SiLaravel /> },
-      { name: "PHP", icon: <SiPhp /> },
-      { name: "Redis", icon: <SiRedis /> },
+      { name: "LangGraph", icon: <SiLangchain /> },
+      { name: "RAG", icon: <SiOperagx /> },
     ],
   },
   {
@@ -48,6 +34,32 @@ const skillGroups = [
       { name: "Git", icon: <SiGit /> },
     ],
   },
+  {
+    label: "Backend",
+    color: "#34d399",
+    skills: [
+      { name: "Python", icon: <SiPython /> },
+      { name: "FastAPI", icon: <SiFastapi /> },
+      { name: "Django", icon: <SiDjango /> },
+      { name: "Laravel", icon: <SiLaravel /> },
+      { name: "Node.js", icon: <SiNodedotjs /> },
+      { name: "Redis", icon: <SiRedis /> },
+    ],
+  },
+  {
+    label: "Frontend",
+    color: "#a78bfa",
+    skills: [
+      { name: "React JS", icon: <SiReact /> },
+      { name: "Vue JS", icon: <SiVuedotjs /> },
+      { name: "JavaScript", icon: <SiJavascript /> },
+      { name: "TypeScript", icon: <SiTypescript /> },
+      { name: "Bootstrap", icon: <SiBootstrap /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+    ],
+  },
+  
+  
 ];
 
 function Skills() {
