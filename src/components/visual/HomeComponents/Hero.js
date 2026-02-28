@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const roles = [
-  "Full Stack Developer",
+  "Software Developer",
   "AI / GenAI Engineer",
   "LLM Applications Developer",
 ];
