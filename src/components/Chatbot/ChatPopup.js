@@ -66,6 +66,7 @@ function ChatPopup() {
     ]);
 
     try {
+        console.log("api url:", API_URL);
       const response = await fetch(`${API_URL}/chat/stream`, {
         method: "POST",
         headers: {
