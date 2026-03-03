@@ -23,7 +23,7 @@ function ChatPopup() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
-  const API_URL = process.env.API_URL || "http://127.0.0.1:8000";
+  const api_url = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000";
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -66,8 +66,7 @@ function ChatPopup() {
     ]);
 
     try {
-        console.log("api url:", API_URL);
-      const response = await fetch(`${API_URL}/chat/stream`, {
+      const response = await fetch(`${api_url}/chat/stream`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
