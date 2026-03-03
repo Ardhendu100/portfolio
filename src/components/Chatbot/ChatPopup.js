@@ -89,7 +89,6 @@ function ChatPopup() {
           const chunk = decoder.decode(value, { stream: true });
           // Split the chunk into words and simulate typing effect
           const words = chunk.split(' ');
-          
           for (let i = 0; i < words.length; i++) {
             botText += words[i] + (i < words.length - 1 ? ' ' : '');
             setMessages((prev) =>
@@ -98,10 +97,16 @@ function ChatPopup() {
               )
             );
             // Small delay to create typing effect (adjust speed here)
-            await new Promise(resolve => setTimeout(resolve, 30));
+            // Move the delay to a separate function to avoid no-loop-func
+            await delay(30);
           }
         }
       }
+
+    // Helper function for delay outside the loop
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
       // If nothing streamed, show fallback
       if (!botText.trim()) {
         setMessages((prev) =>
