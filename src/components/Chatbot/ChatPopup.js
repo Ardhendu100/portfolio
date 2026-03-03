@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiX, HiChat, HiPaperAirplane } from "react-icons/hi";
 import { BsRobot } from "react-icons/bs";
