@@ -7,6 +7,7 @@ import Screen from "../components/terminal/Screen";
 import Experience from "../components/visual/HomeComponents/Experience";
 import Contact from "../components/visual/HomeComponents/Contact";
 import Footer from "../components/visual/HomeComponents/Footer";
+import ChatPopup from "../components/Chatbot/ChatPopup";
 
 function Home() {
   const [keyPressed, setkeyPressed] = useState("");
@@ -34,6 +35,7 @@ function Home() {
       <Experience />
       <Contact />
       <Footer />
+      <ChatPopup />
     </div>
   );
 }
