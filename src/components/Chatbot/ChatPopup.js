@@ -81,6 +81,9 @@ function ChatPopup() {
       let botText = "";
       let done = false;
       
+      // Helper function for delay
+      const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+      
       while (!done) {
         const { value, done: doneReading } = await reader.read();
         done = doneReading;
@@ -91,22 +94,18 @@ function ChatPopup() {
           const words = chunk.split(' ');
           for (let i = 0; i < words.length; i++) {
             botText += words[i] + (i < words.length - 1 ? ' ' : '');
+            const currentText = botText; // Capture current value to avoid unsafe reference
             setMessages((prev) =>
               prev.map((msg) =>
-                msg.id === botMsgId ? { ...msg, text: botText } : msg
+                msg.id === botMsgId ? { ...msg, text: currentText } : msg
               )
             );
             // Small delay to create typing effect (adjust speed here)
-            // Move the delay to a separate function to avoid no-loop-func
             await delay(30);
           }
         }
       }
-
-    // Helper function for delay outside the loop
-    function delay(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
+      
       // If nothing streamed, show fallback
       if (!botText.trim()) {
         setMessages((prev) =>
