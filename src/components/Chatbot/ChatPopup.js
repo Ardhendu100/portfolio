@@ -65,6 +65,17 @@ function ChatPopup() {
       },
     ]);
 
+    // Show warming up message if backend is slow (cold start)
+    let warmingTimeout = setTimeout(() => {
+      setMessages((prev) =>
+        prev.map((msg) =>
+          msg.id === botMsgId && msg.text === ""
+            ? { ...msg, text: "AI server is waking up due to free hosting. Please wait a moment." }
+            : msg
+        )
+      );
+    }, 3000);
+
     try {
       const response = await fetch(`${api_url}/chat/stream`, {
         method: "POST",
@@ -105,6 +116,7 @@ function ChatPopup() {
           }
         }
       }
+      clearTimeout(warmingTimeout);
       
       // If nothing streamed, show fallback
       if (!botText.trim()) {
@@ -117,6 +129,7 @@ function ChatPopup() {
         );
       }
     } catch (error) {
+      clearTimeout(warmingTimeout);
       console.error("Chatbot error:", error);
       setMessages((prev) => [
         ...prev,
